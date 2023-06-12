@@ -38,7 +38,13 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "daily-calendar",
+    "calendar",
+    "date picker",
+    "month picker",
+    "rn",
+    "react-native-daily-calendar"
   ],
   "repository": "https://github.com/ajith-mohan-dev/react-native-daily-calendar",
   "author": "Ajith Suresh <ajithsuresh8829@gmail.com> (https://www.npmjs.com/package/react-native-daily-calendar?activeTab=readme)",
