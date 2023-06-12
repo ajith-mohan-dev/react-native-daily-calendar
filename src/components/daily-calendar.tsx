@@ -3,7 +3,8 @@ import React, { FC, memo, useState } from 'react';
 import { CalendarStrip } from './calendar-strip';
 import moment from 'moment';
 import { StyleSheet } from 'react-native';
-// import {AntDesign, MaterialIcons} from '@expo/vector-icons';
+import { Image } from 'react-native';
+import { IMAGE } from '../theme/image';
 
 interface IProps {
   isMonthPickerReq?: boolean;
@@ -67,17 +68,23 @@ export const DailyCalendar: FC<IProps> = memo(
         {isMonthPickerReq && (
           <View style={styles.container}>
             <View style={styles.spaceBtwView}>
-              <TouchableOpacity onPress={decreamentMonth}>
-                {/* <MaterialIcons name="keyboard-arrow-left" size={24} color="black" /> */}
+              <TouchableOpacity
+                onPress={decreamentMonth}
+                hitSlop={styles.hitSlop}
+              >
+                <Image source={IMAGE.left_arrow} style={styles.image} />
               </TouchableOpacity>
               <View style={styles.rowView}>
-                {/* <AntDesign name="calendar" size={24} color="black" /> */}
+                <Image source={IMAGE.calendar} style={styles.image} />
                 <Text style={styles.monthText}>
                   {moment(selectedMonth, 'MM YYYY').format('MMMM YYYY')}
                 </Text>
               </View>
-              <TouchableOpacity onPress={increamentMonth}>
-                {/* <MaterialIcons name="keyboard-arrow-right" size={24} color="black" /> */}
+              <TouchableOpacity
+                onPress={increamentMonth}
+                hitSlop={styles.hitSlop}
+              >
+                <Image source={IMAGE.right_arrow} style={styles.image} />
               </TouchableOpacity>
             </View>
           </View>
@@ -96,7 +103,7 @@ export const DailyCalendar: FC<IProps> = memo(
 );
 
 const styles = StyleSheet.create({
-  container: { marginHorizontal: 20, marginVertical: 20 },
+  container: { marginHorizontal: 30, marginVertical: 25 },
   spaceBtwView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -111,4 +118,6 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
     fontSize: 14,
   },
+  image: { height: 15, width: 15, resizeMode: 'contain' },
+  hitSlop: { top: 20, bottom: 20, left: 50, right: 50 },
 });
