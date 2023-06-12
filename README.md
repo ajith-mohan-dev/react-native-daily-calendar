@@ -79,10 +79,10 @@ yarn install
 npx expo start
 ```
 
-<!-- ## :handshake: Contributing
+## :handshake: Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request if you find a bug or have a feature request. See the [contributing guide](https://github.com/sacmii/rn-vertical-slider/blob/master/CONTRIBUTING) to learn how to contribute to the repository and the development workflow. -->
+Contributions are welcome! Feel free to open an issue or submit a pull request if you find a bug or have a feature request. See the [contributing guide](https://github.com/ajith-mohan-dev/react-native-daily-calendar/blob/develop/CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
-<!-- ## :scroll: License
+## :scroll: License
 
-This project is licensed under the [MIT License](https://github.com/sacmii/rn-vertical-slider/blob/master/LICENSE). -->
+This project is licensed under the [MIT License](https://github.com/ajith-mohan-dev/react-native-daily-calendar/blob/develop/LICENSE).
