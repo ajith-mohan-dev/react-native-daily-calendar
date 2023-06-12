@@ -1,8 +1,8 @@
-# :control_knobs: rn-vertical-slider
+# :control_knobs: react-native-daily-calendar
 
-A highly customizable vertical slider component for React Native using React Native Gesture Handler and Reanimated. Support this project with a ★ on [**Github**](https://github.com/sacmii/rn-vertical-slider).
+A highly customizable Month and Date Picker component for React Native using momentjs. Support this project with a ★ on [**Github**](https://github.com/ajith-mohan-dev/react-native-daily-calendar).
 
-<img src="https://user-images.githubusercontent.com/12546974/219866420-4796142d-396f-4b31-996a-89f570f7a863.gif" alt="Alt text" width="250">
+<img src="https://github.com/ajith-mohan-dev/react-native-daily-calendar/blob/develop/ezgif.com-gif-to-mp4.gif" alt="Alt text" width="200">
 
 ## :inbox_tray: Installation
 
@@ -11,47 +11,37 @@ You can install this package using either Yarn or NPM.
 ### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/1200px-Npm-logo.svg.png" alt="Alt text" width="50">
 
 ```bash
-npm install rn-vertical-slider
+npm install react-native-daily-calendar
 ```
 
 ### <img src="https://raw.githubusercontent.com/yarnpkg/assets/master/yarn-kitten-full.png" alt="Alt text" width="50">
 
 ```bash
-yarn add rn-vertical-slider
+yarn add react-native-daily-calendar
 ```
 
-**rn-vertical-slider** requires [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/) to be installed, which is a peer dependency. This is a breaking change from version 2 to version 3.
+**react-native-daily-calendar** requires [moment](https://www.npmjs.com/package/moment/) to be installed, which is a peer dependency.
 
 ## :bulb: Usage
 
 ```bash
-import VerticalSlider from 'rn-vertical-slider';
+import DailyCalendar from 'react-native-daily-calendar';
 
 function App() {
-  const [value, setValue] = useState(0);
+   const [selectedDate, setSelectedDate] = useState(moment().format("DD-MM-YYYY"))
   return (
-    <VerticalSlider
-      value={value}
-      onChange={(value) => setValue(value)}
-      height={200}
-      width={40}
-      step={1}
-      min={0}
-      max={100}
-      borderRadius={5}
-      minimumTrackTintColor="#2979FF"
-      maximumTrackTintColor="#D1D1D6"
-      showBallIndicator
-      ballIndicatorColor="#2979FF"
-      ballIndicatorTextColor="#fff"
-      ballIndicatorWidth={80}
-      ballIndicatorHeight={40}
+   <DailyCalendar
+     onDateChangeCalendar={value => {
+     setSelectedDate(moment(value, 'YYYY-MM-DD').format('DD-MM-YYYY'));
+     }}
+     isDatePickerReq={true}
+     isMonthPickerReq={true}
     />
   );
 }
 ```
 
-<img src="https://user-images.githubusercontent.com/12546974/219865670-04781857-d2eb-48b5-a14d-104d73bdc928.gif" alt="Alt text" width="250">
+<img src="https://github.com/ajith-mohan-dev/react-native-daily-calendar/blob/develop/ezgif.com-gif-to-mp4.gif" alt="Alt text" width="250">
 
 ## :book: Props
 
@@ -89,10 +79,10 @@ yarn install
 npx expo start
 ```
 
-## :handshake: Contributing
+<!-- ## :handshake: Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request if you find a bug or have a feature request. See the [contributing guide](https://github.com/sacmii/rn-vertical-slider/blob/master/CONTRIBUTING) to learn how to contribute to the repository and the development workflow.
+Contributions are welcome! Feel free to open an issue or submit a pull request if you find a bug or have a feature request. See the [contributing guide](https://github.com/sacmii/rn-vertical-slider/blob/master/CONTRIBUTING) to learn how to contribute to the repository and the development workflow. -->
 
-## :scroll: License
+<!-- ## :scroll: License
 
-This project is licensed under the [MIT License](https://github.com/sacmii/rn-vertical-slider/blob/master/LICENSE).
+This project is licensed under the [MIT License](https://github.com/sacmii/rn-vertical-slider/blob/master/LICENSE). -->

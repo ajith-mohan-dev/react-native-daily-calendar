@@ -1,6 +1,6 @@
 {
   "name": "react-native-daily-calendar",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -40,13 +40,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/ajith-mohan-dev/react-native-daily-calendar.git",
-  "author": "Ajith Suresh <ajithsuresh8829@gmail.com> (https://www.npmjs.com/package/react-custom-header?activeTab=readme)",
+  "repository": "https://github.com/ajith-mohan-dev/react-native-daily-calendar",
+  "author": "Ajith Suresh <ajithsuresh8829@gmail.com> (https://www.npmjs.com/package/react-native-daily-calendar?activeTab=readme)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ajith-mohan-dev/react-native-daily-calendar.git/issues"
   },
-  "homepage": "https://github.com/ajith-mohan-dev/react-native-daily-calendar.git#readme",
+  "homepage": "https://github.com/ajith-mohan-dev/react-native-daily-calendar#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
