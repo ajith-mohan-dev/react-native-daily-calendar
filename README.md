@@ -47,11 +47,12 @@ function App() {
 
 | Property               | Type     | Default   | Description                                                                                   |
 | :--------------------- | :------- | :-------- | :-------------------------------------------------------------------------------------------- |
-| value                  | number   | 0         | Value of the slider.                                                                          |
-| disabled               | bool     | false     | Enable or disable slider.                                                                     |
-| min                    | number   | 0         | Minimum value for slider.                                                                     |
-| max                    | number   | 0         | Maximum value for slider.                                                                     |
-| onChange               | function | null      | Callback continuously called while the user is dragging the slider.                           |
+| isMonthPickerReq       | bool     | true      | Value of the slider.                                                                          |
+| isDatePickerReq        | bool     | true      | Enable or disable slider.                                                                     |
+| onDateChangeCalendar   | function | null      | Callback called when the user changing the date slider.                                       |
+| onMonthChangeCalendar  | function | null      | Callback called when the user changing the month slider.                                      |
+| monthContainerStyle    | style    | null      | default                                                                                       |
+| slider.                |
 | onComplete             | function | null      | Callback called when the user finishes changing the value (e.g. when the slider is released). |
 | width                  | number   | 0         | Width of the slider.                                                                          |
 | height                 | number   | 0         | Height of the slider.                                                                         |

@@ -1,114 +1,150 @@
-import { Text, TouchableOpacity, View} from 'react-native';
-import React, {FC, memo, useState} from 'react';
-import CalendarStrip from './calendar-strip';
-import moment from 'moment';
-import {AntDesign, MaterialIcons} from '@expo/vector-icons';
+/**
+ * Month and Date Row Component
+ */
 
+import { Text, TextStyle, TouchableOpacity, View } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import React, { FC, memo, useState } from 'react';
+import { CalendarStrip } from './calendar-strip';
+import moment from 'moment';
+import { StyleSheet } from 'react-native';
+import { Image } from 'react-native';
+import { IMAGE } from '../../../src/theme/image';
 
 interface IProps {
   isMonthPickerReq?: boolean;
   isDatePickerReq?: boolean;
   onDateChangeCalendar?: (value: string) => void;
   onMonthChangeCalendar?: (value: string) => void;
+  monthContainerStyle?: ViewStyle;
+  LeftArrowIcon?: React.ElementType;
+  RightArrowIcon?: React.ElementType;
+  monthTextStyle?: TextStyle;
 }
 
-const DailyCalendar: FC<IProps> = ({
-  onDateChangeCalendar = () => {},
-  onMonthChangeCalendar = () => {},
-  isMonthPickerReq = true,
-  isDatePickerReq = true,
-}) => {
-  const currentDate = moment().format('YYYY-MM-DD');
-  const [selectedDate, setSelectedDate] = useState(currentDate);
-  const [selectedMonth, setSelectedMonth] = useState(
-    moment().format('MM YYYY'),
-  );
-
-  const selectDateHandler = (value: string) => {
-    onDateChangeCalendar(value);
-    setSelectedDate(value);
-  };
-
-  const increamentMonth = () => {
-    const increasedMonth = moment(selectedMonth, 'MM YYYY')
-      .add(1, 'month')
-      .format('MM YYYY');
-    const YEAR = moment(increasedMonth, 'MM YYYY').format('YYYY');
-    const MONTH = moment(increasedMonth, 'MM YYYY').format('MM');
-    const DATE = moment(`${YEAR}-${MONTH}-01`, 'YYYY-MM-DD').format(
-      'YYYY-MM-DD',
+export const DailyCalendar: FC<IProps> = memo(
+  ({
+    onDateChangeCalendar = () => {},
+    onMonthChangeCalendar = () => {},
+    isMonthPickerReq = true,
+    isDatePickerReq = true,
+    monthContainerStyle = {},
+    LeftArrowIcon = () => {},
+    RightArrowIcon = () => {},
+    monthTextStyle = {},
+  }) => {
+    //state
+    const currentDate = moment().format('YYYY-MM-DD');
+    const [selectedDate, setSelectedDate] = useState(currentDate);
+    const [selectedMonth, setSelectedMonth] = useState(
+      moment().format('MM YYYY')
     );
-    setSelectedMonth(increasedMonth);
-    setSelectedDate(DATE);
-    if (!isDatePickerReq && isMonthPickerReq) {
-      onDateChangeCalendar(DATE);
-    }
-  };
 
-  const decreamentMonth = () => {
-    const decreasedMonth = moment(selectedMonth, 'MM YYYY')
-      .subtract(1, 'month')
-      .format('MM YYYY');
-    const YEAR = moment(decreasedMonth, 'MM YYYY').format('YYYY');
-    const MONTH = moment(decreasedMonth, 'MM YYYY').format('MM');
-    const DATE = moment(`${YEAR}-${MONTH}-01`, 'YYYY-MM-DD').format(
-      'YYYY-MM-DD',
-    );
-    setSelectedMonth(decreasedMonth);
-    setSelectedDate(DATE);
-    if (!isDatePickerReq && isMonthPickerReq) {
-      onDateChangeCalendar(DATE);
-    }
-  };
+    /**
+     * On Next month change handler
+     */
 
-  return (
-    <>
-      {isMonthPickerReq && (
-        <View style={{marginHorizontal: 20, marginVertical: 20}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <TouchableOpacity onPress={decreamentMonth}>
-            <MaterialIcons name="keyboard-arrow-left" size={24} color="black" />
+    const incrementMonth = () => {
+      const increasedMonth = moment(selectedMonth, 'MM YYYY')
+        .add(1, 'month')
+        .format('MM YYYY');
+      const YEAR = moment(increasedMonth, 'MM YYYY').format('YYYY');
+      const MONTH = moment(increasedMonth, 'MM YYYY').format('MM');
+      const DATE = moment(`${YEAR}-${MONTH}-01`, 'YYYY-MM-DD').format(
+        'YYYY-MM-DD'
+      );
+      setSelectedMonth(increasedMonth);
+      setSelectedDate(DATE);
+      if (!isDatePickerReq && isMonthPickerReq) {
+        onDateChangeCalendar(DATE);
+      }
+    };
+
+    /**
+     * On Previous month change handler
+     */
+
+    const decrementMonth = () => {
+      const decreasedMonth = moment(selectedMonth, 'MM YYYY')
+        .subtract(1, 'month')
+        .format('MM YYYY');
+      const YEAR = moment(decreasedMonth, 'MM YYYY').format('YYYY');
+      const MONTH = moment(decreasedMonth, 'MM YYYY').format('MM');
+      const DATE = moment(`${YEAR}-${MONTH}-01`, 'YYYY-MM-DD').format(
+        'YYYY-MM-DD'
+      );
+      setSelectedMonth(decreasedMonth);
+      setSelectedDate(DATE);
+      if (!isDatePickerReq && isMonthPickerReq) {
+        onDateChangeCalendar(DATE);
+      }
+    };
+
+    /**
+     * on Date Change Handler
+     */
+
+    const selectDateHandler = (value: string) => {
+      onDateChangeCalendar(value);
+      setSelectedDate(value);
+    };
+
+    return (
+      <>
+        {isMonthPickerReq && (
+          <View style={[styles.spaceBtwView, monthContainerStyle]}>
+            <TouchableOpacity onPress={decrementMonth} hitSlop={styles.hitSlop}>
+              {LeftArrowIcon ? (
+                <LeftArrowIcon />
+              ) : (
+                <Image source={IMAGE.left_arrow} style={styles.image} />
+              )}
             </TouchableOpacity>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              
-              <AntDesign name="calendar" size={24} color="black" />
-              <Text
-                style={{
-                  paddingLeft: 12,
-                  // fontFamily: fontFamily.POPPINS_SEMI_BOLD,
-                  fontSize: 14,
-                }}>
+            <View style={styles.rowView}>
+              <Image source={IMAGE.calendar} style={styles.image} />
+              <Text style={[styles.monthText, monthTextStyle]}>
                 {moment(selectedMonth, 'MM YYYY').format('MMMM YYYY')}
               </Text>
             </View>
-            <TouchableOpacity onPress={increamentMonth}>
-            <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
+            <TouchableOpacity onPress={incrementMonth} hitSlop={styles.hitSlop}>
+              {RightArrowIcon ? (
+                <RightArrowIcon />
+              ) : (
+                <Image source={IMAGE.right_arrow} style={styles.image} />
+              )}
             </TouchableOpacity>
           </View>
-        </View>
-      )}
-      {isDatePickerReq && (
-        <CalendarStrip
-          onSelectDate={selectDateHandler}
-          selectedDate={selectedDate}
-          selectedMonth={moment(selectedMonth, 'MM YYYY').format('MM')}
-          selectedYear={moment(selectedMonth, 'MM YYYY').format('YYYY')}
-        />
-      )}
-    </>
-  );
-};
+        )}
+        {isDatePickerReq && (
+          <CalendarStrip
+            onSelectDate={selectDateHandler}
+            selectedDate={selectedDate}
+            selectedMonth={moment(selectedMonth, 'MM YYYY').format('MM')}
+            selectedYear={moment(selectedMonth, 'MM YYYY').format('YYYY')}
+          />
+        )}
+      </>
+    );
+  }
+);
 
-export default memo(DailyCalendar);
-
-
+const styles = StyleSheet.create({
+  spaceBtwView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 30,
+    marginVertical: 25,
+  },
+  rowView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  monthText: {
+    paddingLeft: 12,
+    fontSize: 14,
+  },
+  image: { height: 15, width: 15, resizeMode: 'contain' },
+  hitSlop: { top: 20, bottom: 20, left: 50, right: 50 },
+});
