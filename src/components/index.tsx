@@ -1,19 +1,39 @@
 import { View } from 'react-native';
-import React from 'react';
+import React, { FC } from 'react';
 import { DailyCalendar } from './daily-calendar';
 import { SafeAreaView } from 'react-native';
+import type { IDailyCalendarProps } from './types';
 
-const RootApp = () => {
+const RootApp: FC<IDailyCalendarProps> = ({
+  onDateChangeCalendar = () => {},
+  // onMonthChangeCalendar = () => {},
+  isMonthPickerReq = true,
+  isDatePickerReq = true,
+  monthContainerStyle = {},
+  LeftArrowIcon,
+  RightArrowIcon,
+  monthTextStyle = {},
+  dateStyle = {},
+  dayStyle = {},
+  activeDateColor = '#015CAB',
+  dateContainerStyle = {},
+}) => {
   return (
     <>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <DailyCalendar
-            onDateChangeCalendar={(value) => {
-              console.log('onDateChangeCalendar', value);
-            }} // return 'YYYY-MM-DD' format
-            isDatePickerReq={true}
-            isMonthPickerReq={true}
+            onDateChangeCalendar={onDateChangeCalendar} // return 'YYYY-MM-DD' format
+            isDatePickerReq={isDatePickerReq}
+            isMonthPickerReq={isMonthPickerReq}
+            monthContainerStyle={monthContainerStyle}
+            LeftArrowIcon={LeftArrowIcon}
+            RightArrowIcon={RightArrowIcon}
+            monthTextStyle={monthTextStyle}
+            dateStyle={dateStyle}
+            dayStyle={dayStyle}
+            activeDateColor={activeDateColor}
+            dateContainerStyle={dateContainerStyle}
           />
         </View>
       </SafeAreaView>

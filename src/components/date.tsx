@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 import moment from 'moment';
 
 interface IProps {
@@ -7,10 +8,22 @@ interface IProps {
   date?: string;
   onSelectDate?: (date: string) => void;
   selectedDate?: string;
+  dateStyle: TextStyle;
+  dayStyle: TextStyle;
+  activeDateColor: string;
+  dateContainerStyle: ViewStyle;
 }
 
 export const Date: FC<IProps> = memo(
-  ({ date, onSelectDate, selectedDate }: any) => {
+  ({
+    date,
+    onSelectDate = () => {},
+    selectedDate,
+    dateStyle,
+    dayStyle,
+    activeDateColor = '#015CAB',
+    dateContainerStyle,
+  }) => {
     /**
      * use moment to compare the date to today
      * if today, show 'Today'
@@ -35,30 +48,31 @@ export const Date: FC<IProps> = memo(
           <View
             style={[
               styles.card,
-              isHighLightDate && { backgroundColor: '#015CAB' },
+              isHighLightDate && { backgroundColor: activeDateColor },
+              dateContainerStyle,
             ]}
           >
             <Text
-              style={{
-                // fontFamily: isHighLightDate
-                //   ? fontFamily.POPPINS_SEMI_BOLD
-                //   : fontFamily.POPPINS_REGULAR,
-                fontSize: isHighLightDate ? 14 : 12,
-                color: isHighLightDate ? '#ffffff' : '#000000',
-              }}
+              style={[
+                {
+                  fontSize: isHighLightDate ? 14 : 12,
+                  color: isHighLightDate ? '#ffffff' : '#000000',
+                },
+                dateStyle,
+              ]}
             >
               {dayNumber}
             </Text>
           </View>
           <Text
-            style={{
-              // fontFamily: isHighLightDate
-              //   ? fontFamily.POPPINS_SEMI_BOLD
-              //   : fontFamily.POPPINS_MEDIUM,
-              fontSize: 12,
-              color: isHighLightDate ? '#015CAB' : '#747A86',
-              marginTop: 10,
-            }}
+            style={[
+              {
+                fontSize: 12,
+                color: isHighLightDate ? '#015CAB' : '#747A86',
+                marginTop: 10,
+              },
+              dayStyle,
+            ]}
           >
             {day}
           </Text>
