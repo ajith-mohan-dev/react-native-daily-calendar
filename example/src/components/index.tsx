@@ -1,28 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
-import DailyCalendar from './daily-calendar';
-import moment from 'moment';
+import { View } from 'react-native';
+import React, { FC } from 'react';
+import { DailyCalendar } from './daily-calendar';
+import { SafeAreaView } from 'react-native';
+import type { IDailyCalendarProps } from './types';
 
-const index = () => {
-  const [selectedDate, setSelectedDate] = useState<string>(
-    moment().format('DD-MM-YYYY')
-  );
-
+const RootApp: FC<IDailyCalendarProps> = ({
+  onDateChangeCalendar = () => {},
+  isDatePickerReq = true,
+  isMonthPickerReq = true,
+}) => {
   return (
     <>
-      <View style={{ flex: 1 }}>
-        <DailyCalendar
-          onDateChangeCalendar={(value) => {
-            setSelectedDate(moment(value, 'YYYY-MM-DD').format('DD-MM-YYYY'));
-          }}
-          isDatePickerReq={true}
-          isMonthPickerReq={true}
-        />
-      </View>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <DailyCalendar
+            onDateChangeCalendar={onDateChangeCalendar} // return 'YYYY-MM-DD' format
+            isDatePickerReq={isDatePickerReq}
+            isMonthPickerReq={isMonthPickerReq}
+          />
+        </View>
+      </SafeAreaView>
     </>
   );
 };
 
-export default index;
-
-const styles = StyleSheet.create({});
+export default RootApp;

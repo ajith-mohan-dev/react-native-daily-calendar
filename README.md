@@ -45,29 +45,18 @@ function App() {
 
 ## :book: Props
 
-| Property               | Type     | Default   | Description                                                                                   |
-| :--------------------- | :------- | :-------- | :-------------------------------------------------------------------------------------------- |
-| value                  | number   | 0         | Value of the slider.                                                                          |
-| disabled               | bool     | false     | Enable or disable slider.                                                                     |
-| min                    | number   | 0         | Minimum value for slider.                                                                     |
-| max                    | number   | 0         | Maximum value for slider.                                                                     |
-| onChange               | function | null      | Callback continuously called while the user is dragging the slider.                           |
-| onComplete             | function | null      | Callback called when the user finishes changing the value (e.g. when the slider is released). |
-| width                  | number   | 0         | Width of the slider.                                                                          |
-| height                 | number   | 0         | Height of the slider.                                                                         |
-| borderRadius           | number   | 0         | The border radius of component.                                                               |
-| maximumTrackTintColor  | string   | '#eee'    | The top color.                                                                                |
-| minimumTrackTintColor  | string   | '#fff'    | The bottom color.                                                                             |
-| showBallIndicator      | bool     | false     | To show or hide indicator.                                                                    |
-| step                   | number   | 0         | This value describes number of steps to skip.                                                 |
-| ballIndicatorColor     | string   | '#fff'    | Background color for Indicator                                                                |
-| ballIndicatorWidth     | number   | 48        | Diameter of Indicator. [Height of Indicator : If renderIndicator present]                     |
-| ballIndicatorHeight    | number   | 48        | Diameter of Indicator. [Width of Indicator : If renderIndicator present]                      |
-| ballIndicatorPosition  | number   | -50       | Horizontal position of Indicator with respect to current selected value.                      |
-| ballIndicatorTextColor | string   | '#fff'    | Indicator text color.                                                                         |
-| showBackgroundShadow   | boolean  | 0         | Display shadow on Indicator (If available) and Slider                                         |
-| shadowProps            | object   | see below | Shadow Configuration for Slider                                                               |
-| renderIndicator        | boolean  | 0         | Render a custom slider indicator                                                              |
+| Property              | Type        | Default | Description                                                                                   |
+| :-------------------- | :---------- | :------ | :-------------------------------------------------------------------------------------------- |
+| isMonthPickerReq      | bool        | true    | Value of the slider.                                                                          |
+| isDatePickerReq       | bool        | true    | Enable or disable slider.                                                                     |
+| onDateChangeCalendar  | function    | null    | Callback called when the user changing the date slider.                                       |
+| onMonthChangeCalendar | function    | null    | Callback called when the user changing the month slider.                                      |
+| monthContainerStyle   | ViewStyle   | null    | default                                                                                       |
+| slider.               |
+| LeftArrowIcon         | JSX.Element | null    | Callback called when the user finishes changing the value (e.g. when the slider is released). |
+| RightArrowIcon        | JSX.Element | 0       | Width of the slider.                                                                          |
+| monthTextStyle        | TextStyle   | 0       | Height of the slider.                                                                         |
+| borderRadius          | number      | 0       | The border radius of                                                                          |
 
 ## :art: Demo
 
