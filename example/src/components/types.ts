@@ -6,7 +6,7 @@ export interface IDailyCalendarProps {
   onDateChangeCalendar?: (value: string) => void;
   onMonthChangeCalendar?: (value: string) => void;
   monthContainerStyle?: ViewStyle;
-  LeftArrowIcon?: React.ElementType;
-  RightArrowIcon?: React.ElementType;
+  LeftArrowIcon?: JSX.Element | React.ElementType;
+  RightArrowIcon?: JSX.Element | React.ElementType;
   monthTextStyle?: TextStyle;
 }
