@@ -34,8 +34,6 @@ function App() {
      onDateChangeCalendar={value => {
      setSelectedDate(moment(value, 'YYYY-MM-DD').format('DD-MM-YYYY'));
      }}
-     isDatePickerReq={true}
-     isMonthPickerReq={true}
     />
   );
 }
@@ -45,22 +43,24 @@ function App() {
 
 ## :book: Props
 
-| Property              | Type        | Default      | Description                                              |
-| :-------------------- | :---------- | :----------- | :------------------------------------------------------- |
-| isMonthPickerReq      | bool        | true         | Value of the slider.                                     |
-| isDatePickerReq       | bool        | true         | Enable or disable slider.                                |
-| onDateChangeCalendar  | function    | null         | Callback called when the user changing the date slider.  |
-| onMonthChangeCalendar | function    | null         | Callback called when the user changing the month slider. |
-| monthContainerStyle   | ViewStyle   | null         |
-| slider.               |
-| LeftArrowIcon         | JSX.Element | Default Icon | Month Picker Right Icon slider.                          |
-| RightArrowIcon        | JSX.Element | Default Icon | Month Picker Right Icon slider.                          |
-| monthTextStyle        | TextStyle   | -            | Styling for Month Name                                   |
-| borderRadius          | number      | 0            | The border radius of                                     |
+| Property              | Type        | Default      | Description                                       |
+| :-------------------- | :---------- | :----------- | :------------------------------------------------ |
+| isMonthPickerReq      | bool        | true         | Boolean for month picker.                         |
+| isDatePickerReq       | bool        | true         | Boolean for date picker.                          |
+| onDateChangeCalendar  | function    | null         | Callback called when the user changing the date.  |
+| onMonthChangeCalendar | function    | null         | Callback called when the user changing the month. |
+| monthContainerStyle   | ViewStyle   | null         | Custom styling for month container                |
+| LeftArrowIcon         | JSX.Element | Default Icon | Month Picker Right Icon slider.                   |
+| RightArrowIcon        | JSX.Element | Default Icon | Month Picker left Icon slider.                    |
+| monthTextStyle        | TextStyle   | -            | Custom styling for Month Name.                    |
+| dateStyle             | TextStyle   | -            | Custom styling for date.                          |
+| dayStyle              | TextStyle   | -            | Custom styling for day.                           |
+| activeDateColor       | String      | -            | Background color for active date.                 |
+| dateContainerStyle    | ViewStyle   | -            | Custom styling for date tabs.                     |
 
 ## :art: Demo
 
-You can try the [example app](https://github.com/sacmii/rn-vertical-slider/tree/master/example) by cloning this repo and running the following commands:
+You can try the [example app](https://github.com/ajith-mohan-dev/react-native-daily-calendar/tree/develop/example) by cloning this repo and running the following commands:
 
 ```sh
 cd example

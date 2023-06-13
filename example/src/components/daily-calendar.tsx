@@ -2,36 +2,29 @@
  * Month and Date Row Component
  */
 
-import { Text, TextStyle, TouchableOpacity, View } from 'react-native';
-import type { ViewStyle } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import React, { FC, memo, useState } from 'react';
 import { CalendarStrip } from './calendar-strip';
 import moment from 'moment';
 import { StyleSheet } from 'react-native';
 import { Image } from 'react-native';
 import { IMAGE } from '../../../src/theme/image';
+import type { IDailyCalendarProps } from './types';
 
-interface IProps {
-  isMonthPickerReq?: boolean;
-  isDatePickerReq?: boolean;
-  onDateChangeCalendar?: (value: string) => void;
-  onMonthChangeCalendar?: (value: string) => void;
-  monthContainerStyle?: ViewStyle;
-  LeftArrowIcon?: React.ElementType;
-  RightArrowIcon?: React.ElementType;
-  monthTextStyle?: TextStyle;
-}
-
-export const DailyCalendar: FC<IProps> = memo(
+export const DailyCalendar: FC<IDailyCalendarProps> = memo(
   ({
     onDateChangeCalendar = () => {},
     onMonthChangeCalendar = () => {},
     isMonthPickerReq = true,
     isDatePickerReq = true,
     monthContainerStyle = {},
-    LeftArrowIcon = () => {},
-    RightArrowIcon = () => {},
+    LeftArrowIcon,
+    RightArrowIcon,
     monthTextStyle = {},
+    dateStyle = {},
+    dayStyle = {},
+    activeDateColor = '#015CAB',
+    dateContainerStyle = {},
   }) => {
     //state
     const currentDate = moment().format('YYYY-MM-DD');
@@ -121,6 +114,10 @@ export const DailyCalendar: FC<IProps> = memo(
             selectedDate={selectedDate}
             selectedMonth={moment(selectedMonth, 'MM YYYY').format('MM')}
             selectedYear={moment(selectedMonth, 'MM YYYY').format('YYYY')}
+            dateStyle={dateStyle}
+            dayStyle={dayStyle}
+            activeDateColor={activeDateColor}
+            dateContainerStyle={dateContainerStyle}
           />
         )}
       </>

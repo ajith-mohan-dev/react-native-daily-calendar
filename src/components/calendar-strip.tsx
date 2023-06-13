@@ -1,5 +1,13 @@
-import React, { useState, useEffect, FC, useRef, memo } from 'react';
+import React, {
+  useState,
+  useEffect,
+  FC,
+  useRef,
+  memo,
+  useCallback,
+} from 'react';
 import { View, FlatList } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 import moment from 'moment';
 import { Date } from './date';
 
@@ -8,11 +16,24 @@ interface IProps {
   onSelectDate?: (date: string) => void;
   selectedMonth?: string;
   selectedYear?: string;
+  dateStyle: TextStyle;
+  dayStyle: TextStyle;
+  activeDateColor: string;
+  dateContainerStyle: ViewStyle;
 }
 
 export const CalendarStrip: FC<IProps> = memo(
-  ({ onSelectDate = () => {}, selectedDate, selectedMonth, selectedYear }) => {
-    const [dates, setDates] = useState([]);
+  ({
+    onSelectDate = () => {},
+    selectedDate,
+    selectedMonth,
+    selectedYear,
+    dateStyle = {},
+    dayStyle = {},
+    activeDateColor,
+    dateContainerStyle = {},
+  }) => {
+    const [dates, setDates] = useState<Array<string>>([]);
 
     //scrollview Ref
     const ref = useRef<FlatList>(null);
@@ -38,16 +59,16 @@ export const CalendarStrip: FC<IProps> = memo(
       }
     }, [dates]);
 
-    const getDates = () => {
-      const datesArr: any = [];
-      for (let i = 1; i <= daysInMonth; i++) {
-        const date = moment(`${YEAR}-${MONTH + 1}-${i}`, 'YYYY-MM-DD').format(
-          'YYYY-MM-DD'
+    const getDates = useCallback(() => {
+      const datesArr: string[] = new Array(daysInMonth)
+        .fill(null)
+        .map((_, index) =>
+          moment(`${YEAR}-${MONTH + 1}-${index + 1}`, 'YYYY-MM-DD').format(
+            'YYYY-MM-DD'
+          )
         );
-        datesArr.push(date);
-      }
       setDates(datesArr);
-    };
+    }, [selectedMonth, selectedYear]);
 
     const handleScrollToIndex = (index: number) => {
       if (dates.length > index) {
@@ -78,6 +99,10 @@ export const CalendarStrip: FC<IProps> = memo(
                   date={item}
                   onSelectDate={(value) => handleSelectedDate(value, index)}
                   selectedDate={selectedDate}
+                  dateStyle={dateStyle}
+                  dayStyle={dayStyle}
+                  activeDateColor={activeDateColor}
+                  dateContainerStyle={dateContainerStyle}
                 />
               )}
               horizontal

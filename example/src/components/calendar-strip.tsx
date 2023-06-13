@@ -7,6 +7,7 @@ import React, {
   useCallback,
 } from 'react';
 import { View, FlatList } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 import moment from 'moment';
 import { Date } from './date';
 
@@ -15,10 +16,23 @@ interface IProps {
   onSelectDate?: (date: string) => void;
   selectedMonth?: string;
   selectedYear?: string;
+  dateStyle: TextStyle;
+  dayStyle: TextStyle;
+  activeDateColor: string;
+  dateContainerStyle: ViewStyle;
 }
 
 export const CalendarStrip: FC<IProps> = memo(
-  ({ onSelectDate = () => {}, selectedDate, selectedMonth, selectedYear }) => {
+  ({
+    onSelectDate = () => {},
+    selectedDate,
+    selectedMonth,
+    selectedYear,
+    dateStyle = {},
+    dayStyle = {},
+    activeDateColor,
+    dateContainerStyle = {},
+  }) => {
     const [dates, setDates] = useState<Array<string>>([]);
 
     //scrollview Ref
@@ -85,6 +99,10 @@ export const CalendarStrip: FC<IProps> = memo(
                   date={item}
                   onSelectDate={(value) => handleSelectedDate(value, index)}
                   selectedDate={selectedDate}
+                  dateStyle={dateStyle}
+                  dayStyle={dayStyle}
+                  activeDateColor={activeDateColor}
+                  dateContainerStyle={dateContainerStyle}
                 />
               )}
               horizontal
