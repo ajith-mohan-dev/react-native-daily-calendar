@@ -45,18 +45,18 @@ function App() {
 
 ## :book: Props
 
-| Property              | Type        | Default | Description                                                                                   |
-| :-------------------- | :---------- | :------ | :-------------------------------------------------------------------------------------------- |
-| isMonthPickerReq      | bool        | true    | Value of the slider.                                                                          |
-| isDatePickerReq       | bool        | true    | Enable or disable slider.                                                                     |
-| onDateChangeCalendar  | function    | null    | Callback called when the user changing the date slider.                                       |
-| onMonthChangeCalendar | function    | null    | Callback called when the user changing the month slider.                                      |
-| monthContainerStyle   | ViewStyle   | null    | default                                                                                       |
+| Property              | Type        | Default      | Description                                              |
+| :-------------------- | :---------- | :----------- | :------------------------------------------------------- |
+| isMonthPickerReq      | bool        | true         | Value of the slider.                                     |
+| isDatePickerReq       | bool        | true         | Enable or disable slider.                                |
+| onDateChangeCalendar  | function    | null         | Callback called when the user changing the date slider.  |
+| onMonthChangeCalendar | function    | null         | Callback called when the user changing the month slider. |
+| monthContainerStyle   | ViewStyle   | null         |
 | slider.               |
-| LeftArrowIcon         | JSX.Element | null    | Callback called when the user finishes changing the value (e.g. when the slider is released). |
-| RightArrowIcon        | JSX.Element | 0       | Width of the slider.                                                                          |
-| monthTextStyle        | TextStyle   | 0       | Height of the slider.                                                                         |
-| borderRadius          | number      | 0       | The border radius of                                                                          |
+| LeftArrowIcon         | JSX.Element | Default Icon | Month Picker Right Icon slider.                          |
+| RightArrowIcon        | JSX.Element | Default Icon | Month Picker Right Icon slider.                          |
+| monthTextStyle        | TextStyle   | -            | Styling for Month Name                                   |
+| borderRadius          | number      | 0            | The border radius of                                     |
 
 ## :art: Demo
 
