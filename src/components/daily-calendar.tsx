@@ -25,6 +25,7 @@ export const DailyCalendar: FC<IDailyCalendarProps> = memo(
     dayStyle = {},
     activeDateColor = '#015CAB',
     dateContainerStyle = {},
+    dayFormat = 'ddd',
   }) => {
     //state
     const currentDate = moment().format('YYYY-MM-DD');
@@ -118,6 +119,7 @@ export const DailyCalendar: FC<IDailyCalendarProps> = memo(
             dayStyle={dayStyle}
             activeDateColor={activeDateColor}
             dateContainerStyle={dateContainerStyle}
+            dayFormat={dayFormat}
           />
         )}
       </>

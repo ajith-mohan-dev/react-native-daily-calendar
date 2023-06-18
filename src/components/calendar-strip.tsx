@@ -20,6 +20,7 @@ interface IProps {
   dayStyle: TextStyle;
   activeDateColor: string;
   dateContainerStyle: ViewStyle;
+  dayFormat: 'ddd' | 'dddd';
 }
 
 export const CalendarStrip: FC<IProps> = memo(
@@ -32,6 +33,7 @@ export const CalendarStrip: FC<IProps> = memo(
     dayStyle = {},
     activeDateColor,
     dateContainerStyle = {},
+    dayFormat = 'ddd',
   }) => {
     const [dates, setDates] = useState<Array<string>>([]);
 
@@ -103,6 +105,7 @@ export const CalendarStrip: FC<IProps> = memo(
                   dayStyle={dayStyle}
                   activeDateColor={activeDateColor}
                   dateContainerStyle={dateContainerStyle}
+                  dayFormat={dayFormat}
                 />
               )}
               horizontal

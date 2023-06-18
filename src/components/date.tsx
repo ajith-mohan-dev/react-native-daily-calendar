@@ -12,6 +12,7 @@ interface IProps {
   dayStyle: TextStyle;
   activeDateColor: string;
   dateContainerStyle: ViewStyle;
+  dayFormat?: 'ddd' | 'dddd';
 }
 
 export const Date: FC<IProps> = memo(
@@ -23,6 +24,7 @@ export const Date: FC<IProps> = memo(
     dayStyle,
     activeDateColor = '#015CAB',
     dateContainerStyle,
+    dayFormat = 'ddd',
   }) => {
     /**
      * use moment to compare the date to today
@@ -32,10 +34,10 @@ export const Date: FC<IProps> = memo(
     const day =
       moment(date).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')
         ? 'Today'
-        : moment(date).format('ddd');
+        : moment(date).format('dddd');
 
     // get the day number e.g 1, 2, 3, 4, 5, 6, 7
-    const dayNumber = moment(date).format('DD');
+    const dayNumber = moment(date).format(dayFormat);
 
     // get the full date e.g 2021-01-01 - we'll use this to compare the date to the selected date
     const fullDate = moment(date).format('YYYY-MM-DD');
