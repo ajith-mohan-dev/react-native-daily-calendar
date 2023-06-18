@@ -13,4 +13,5 @@ export interface IDailyCalendarProps {
   dayStyle?: TextStyle;
   activeDateColor?: string;
   dateContainerStyle?: ViewStyle;
+  dayFormat?: 'ddd' | 'dddd';
 }

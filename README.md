@@ -57,6 +57,7 @@ function App() {
 | dayStyle              | TextStyle   | -            | Custom styling for day.                           |
 | activeDateColor       | String      | -            | Background color for active date.                 |
 | dateContainerStyle    | ViewStyle   | -            | Custom styling for date tabs.                     |
+| dayFormat             | string      | ddd          | Custom day format for days                        |
 
 ## :art: Demo
 

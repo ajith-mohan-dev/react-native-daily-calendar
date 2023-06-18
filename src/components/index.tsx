@@ -17,6 +17,7 @@ const RootApp: FC<IDailyCalendarProps> = ({
   dayStyle = {},
   activeDateColor = '#015CAB',
   dateContainerStyle = {},
+  dayFormat = 'ddd',
 }) => {
   return (
     <>
@@ -34,6 +35,7 @@ const RootApp: FC<IDailyCalendarProps> = ({
             dayStyle={dayStyle}
             activeDateColor={activeDateColor}
             dateContainerStyle={dateContainerStyle}
+            dayFormat={dayFormat}
           />
         </View>
       </SafeAreaView>
